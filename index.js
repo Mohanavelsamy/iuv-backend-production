@@ -5,6 +5,7 @@ const onboardRoute = require("./api/onboardUser");
 
 // ✅ ADD THIS LINE
 const deviceRoutes = require("./api/device");
+const deviceStatusRoutes = require("./api/deviceStatus");
 
 const startScheduler = require("./workers/scheduler");
 const startRecoveryWorker = require("./workers/recovery");
@@ -24,6 +25,7 @@ app.use("/api", onboardRoute);
 
 // ✅ ADD THIS LINE
 app.use("/api", deviceRoutes);
+app.use("/api", deviceStatusRoutes);
 
 app.get("/", (req, res) => {
   res.send("iuv backend running");
