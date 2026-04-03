@@ -25,9 +25,14 @@ app.use("/api", onboardRoute);
 // ✅ ADD THIS LINE
 app.use("/api", deviceRoutes);
 
-const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+  res.send("iuv backend running");
+});
+
+const PORT = process.env.PORT || 8080;
+
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`[HTTP] API server listening on port ${PORT}`);
+  console.log("✅ Server running on port:", PORT);
 });
 
 // Start scheduler
