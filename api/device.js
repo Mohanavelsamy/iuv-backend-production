@@ -40,7 +40,7 @@ router.get("/generate-device-id", async (req, res) => {
 
     if (error) throw error;
 
-    res.json({ device_id: deviceId });
+    res.json({ deviceId: deviceId });
 
   } catch (err) {
     console.error("Device ID error:", err);
