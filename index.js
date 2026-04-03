@@ -3,6 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const onboardRoute = require("./api/onboardUser");
 
+// ✅ ADD THIS LINE
+const deviceRoutes = require("./api/device");
+
 const startScheduler = require("./workers/scheduler");
 const startRecoveryWorker = require("./workers/recovery");
 const startCleanupWorker = require("./workers/cleanup");
@@ -16,7 +19,11 @@ console.log("Content pipeline started...");
 // HTTP API server (for onboarding)
 const app = express();
 app.use(express.json());
+
 app.use("/api", onboardRoute);
+
+// ✅ ADD THIS LINE
+app.use("/api", deviceRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
